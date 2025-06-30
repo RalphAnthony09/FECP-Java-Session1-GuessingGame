@@ -1,17 +1,36 @@
 package org.example;
-
+import java.util.*;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        int secretNumber = (int) (Math.random() * 5) + 1;
+        int currentGuess = 0;
+        boolean isGuessedcorrectly = false;
+        System.out.println("I'm thinking of a number between 1 and 5.");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner scanner = new Scanner(System.in);
+
+        for (int numberOfguesses = 1; numberOfguesses <=3; numberOfguesses++) {
+
+            System.out.printf("Guess %d: ", numberOfguesses);
+            currentGuess = scanner.nextInt();
+
+            if(currentGuess == secretNumber) {
+                System.out.println("You guessed it!");
+                System.out.println("You Win!");
+                isGuessedcorrectly = true;
+                break;
+            }
+            else {
+                System.out.println("Wrong Guess");
+            }
+
         }
+
+        if (!isGuessedcorrectly) {
+            System.out.println("You lose. The correct number was " + secretNumber + ".");
+        }
+
     }
 }
